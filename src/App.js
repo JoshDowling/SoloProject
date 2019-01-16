@@ -1,26 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import nfl from './nfl.png';
 import './App.css';
+import teambuilder from'./teambuilder.js';
+import playerlist from './playerlist.js';
+import account from './account';
+import Home from './home.js';
+import{
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+
+// import { Button } from 'reactstrap';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       <Router>
+       <div>
+        
+        <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/playerlist">Player List</Link></li>
+              <li><Link to="/teambuilder">Team Builder</Link></li>
+              <li><Link to="/account">My Account</Link></li>
+
+            </ul>
+          </nav>
+          <div className= "logo"><img src={nfl} className="nfl-logo" alt="logo" /></div>
+          <div className= "logo2"><img src={nfl} className="nfl-logo2" alt="logo" /></div>
+       
+
+        <div className="nfl">
+        <h1 className= "nfl-main-heading">Welcome to The NFL Team Builder</h1>
+              <header className="nfl-header">
+                <Route exact path="/" component={Home} />
+                <Route path="/teambuilder" component={teambuilder} />
+                <Route path="/playerlist" component={playerlist} />
+                <Route path="/account" component={account} />
+
+          </header>
+              
+        </div>
+      
       </div>
+      </Router>
     );
   }
 }
