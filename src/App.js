@@ -34,11 +34,11 @@ class App extends Component {
 
         <div className="nfl">
         <h1 className= "nfl-main-heading">Welcome to The NFL Team Builder</h1>
-              <header className="nfl-header">
-                <Route exact path="/" component={Home} />
-                <Route path="/teambuilder" component={teambuilder} />
-                <Route path="/playerlist" component={playerlist} />
-                <Route path="/account" component={account} />
+           <header className="nfl-header">
+              <Route exact path="/" component={Home} />
+              <Route path="/teambuilder" component={teambuilder} />
+              <Route path="/playerlist" component={playerlist} />
+              <Route path="/account" component={account} />
 
           </header>
               
