@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import nfl from './nfl.png';
 import './App.css';
 import teambuilder from'./teambuilder.js';
-import playerlist from './playerlist.js';
+import register from './register.js';
 import account from './account';
 import Home from './home.js';
 import{
@@ -22,8 +22,8 @@ class App extends Component {
         <nav>
             <ul>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/playerlist">Player List</Link></li>
               <li><Link to="/teambuilder">Team Builder</Link></li>
+              <li><Link to="/register">Register</Link></li>
               <li><Link to="/account">My Account</Link></li>
 
             </ul>
@@ -37,13 +37,15 @@ class App extends Component {
            <header className="nfl-header">
               <Route exact path="/" component={Home} />
               <Route path="/teambuilder" component={teambuilder} />
-              <Route path="/playerlist" component={playerlist} />
+              <Route path="/register" component={register} />
               <Route path="/account" component={account} />
 
           </header>
               
         </div>
-      
+        <footer class="footer">
+        <p>© Josh Dowling 2019</p>
+      </footer>
       </div>
       </Router>
     );
