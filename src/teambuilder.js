@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import nfl from './nfl.png';
+
 import './App.css';
 
 class teambuilder extends Component {

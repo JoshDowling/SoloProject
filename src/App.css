@@ -57,14 +57,15 @@ body {  width: 70%;  margin-left: auto;  margin-right: auto}
 
 
 .nfl-header {
- background: rgba(255, 255, 255, 0.9);
+ background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Archivo Narrow;
 /*  justify-content: center;
-*/  font-size: calc(30px);
+*/  font-size: 35px;
   color: black;
 }
 
@@ -96,4 +97,14 @@ body {  width: 70%;  margin-left: auto;  margin-right: auto}
   text-align: center
 }
 
+.homeimage{
+border-radius: 25px;
+margin-top: 20px;
+}
 
+.smallText{
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 40px;
+  font-family: Archivo Narrow;
+}

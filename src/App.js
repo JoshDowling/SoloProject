@@ -28,8 +28,8 @@ class App extends Component {
 
             </ul>
           </nav>
-          <div className= "logo"><img src={nfl} className="nfl-logo" alt="logo" /></div>
-          <div className= "logo2"><img src={nfl} className="nfl-logo2" alt="logo" /></div>
+          <div className= "logo"><a href="/"><img src={nfl} className="nfl-logo" alt="logo" /></a></div>
+          <div className= "logo2"><a href="/"><img src={nfl} className="nfl-logo2" alt="logo" /></a></div>
        
 
         <div className="nfl">
