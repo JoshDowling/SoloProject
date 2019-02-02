@@ -50,8 +50,9 @@ addTeam = (e) => {
   render() {
     
     let elements = [];
-    let teams = this.state.team;
+    let team = this.state.team;
     console.log(this.state.team);
+    
     for (let i = 0; i < this.state.team.length; i++) {
         elements.push(
             <Teambuilderplus
@@ -71,17 +72,25 @@ addTeam = (e) => {
          <div className="databaseSection">
                     <form className='itemForm' onSubmit={this.addTeam}>
                         <fieldset>
-                            <legend>New Team</legend>
-                            <input ref="teamName" type="text" placeholder="Enter Team Name" />
-                            <input ref="location" type="text" placeholder="Enter Team Location" />
-                            <input ref="accountID" type="text" placeholder="Enter Your Account #" />
-                            <br />
-                            <button type='submit'>Submit</button>
+                            <legend className= "teambname">Add a New Team</legend>
+                            <div class="form-group">
+                            <input ref="teamName" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Team Name*" />
+                            </div>
+                            <div class="form-group">
+                            <input ref="location" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Team Location*" />
+                            </div><div class="form-group">
+                            <input ref="accountID" type="name" class="form-control"  required="" autofocus="" placeholder="Enter Account Number*" />
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block" type='submit'>Submit</button>
                                                         
                         </fieldset>
                     </form>
+                   
+                    <br />
+                    <h2 className= "teambname"> <u>Current Teams</u></h2>
                     {elements}
             </div>
+            <br />
       </div>
     );
   }

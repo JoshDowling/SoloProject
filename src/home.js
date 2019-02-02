@@ -14,6 +14,7 @@ class home extends Component {
           <p className= "smallText"><a href="account">Login</a> or <a href="register">Register</a> an account to start creating your team.</p>
           <p>  </p>
           <img class="homeimage" src={rw} alt="" width="350" height="500"/>
+          <br/>
       </div>
       </div>
     );

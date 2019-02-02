@@ -14,84 +14,57 @@ class account extends Component {
     };
      }
 
-update() {
-  // let username = document.getElementById('username').value;
-  // let password = document.getElementById('password').value;
-axios.get("http://localhost:8080/solo-project/nfl/account/getAccounts")
-.then((response) => {
-        var username = this.state.username;
-        var password = this.state.password;
-        
-        this.state.account.forEach(function(user){
-          if(username===account.username){
-            console.log("account found")
-          }
-          if(password===account.password){
-            console.log("account authenticated")
-        }
-      }
-    
-);
-} 
-)}
+     checkUser = () => {
 
+      axios.post('http://localhost:8080/solo-project/nfl/account/login', {
+        username: this.state.username,
+        password: this.state.password
+      })
+        .then((response) => {
+          if (response.data[0] == this.state.username) {
+            sessionStorage.setItem("logUser", response.data[0]);
   
-  // login = () =>{
-  // axios({method:'get', url:"http://localhost:8080/solo-project/nfl/account/getAccounts"
-  //     })
-  //     .then(response => {
-  //       this.setState({users:response.data
-  //       });
-        
-  //       var username = this.state.username;
-  //       var password = this.state.password;
-        
-  //       this.state.account.forEach(function(user){
-  //         if(username===account.username){
-  //           console.log("account found")
-  //         }
-  //       })
-  //     }
-  //   )}  
-    
-  //   handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     this.login();
-    
-  // }
-
-  // handleChange = (e) => {
-  //     this.setState({
-  //         [e.target.id]: e.target.value
-  //     });
-  // }
+  
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  
+    handleSubmit = (e) => {
+  
+      this.checkUser();
+  
+    }
+  
+    handleChange = (e) => {
+      this.setState({
+        [e.target.id]: e.target.value
+      })
+    }
 
       
   render() {
     return (
        
        <div className = "acpara">
+  
+  
   <form class="form-signin" onSubmit={this.handleSubmit}>
     
     <a href= "/"><img class="mb-4" src={nfl} alt="" width="150" height="200"/></a>
-    <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-    <div class="form-group">
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input  type="username" id="username" class="form-control" placeholder="Username" required="" autofocus=""/>
-   
+    <h1 class="h3 mb-3 font-weight-normal">{ sessionStorage.getItem("logUser") === null ? "Please sign in":sessionStorage.getItem("logUser") + " Is Logged In"}</h1>
+    <label for="username" class="sr-only">Username</label>
+    <div class="form-group"> 
+          <input onChange={this.handleChange} type="name" id="username" class="form-control" placeholder="Username" required="" autofocus="" />
+          </div>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <div class="form-group">
+          <input onChange={this.handleChange} type="password" id="password" class="form-control" placeholder="Password" required="" />
     </div>
-    <div class="form-group">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input  type="password" id="password" class="form-control" placeholder="Password" required=""/>
-    
-    </div>
-    <ul> 
-     <li className= "accountDisplay">{this.state.account.accountID}</li>
-     <li className= "accountDisplay">{this.state.account.name}</li>
-     <li className= "accountDisplay">{this.state.account.username}</li>
-     <li className= "accountDisplay">{this.state.account.password}</li>
-    </ul>
-  <button class="btn btn-lg btn-primary btn-block" type="submit"onClick={() => this.login()}>Sign in</button>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit" onClick={this.handleSubmit}>Sign in</button>
  
   </form>
        

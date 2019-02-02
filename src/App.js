@@ -3,7 +3,7 @@ import nfl from './nfl.png';
 import './App.css';
 import teambuilder from'./teambuilder.js';
 import register from './register.js';
-import account from './account';
+import Account from './account';
 import Home from './home.js';
 import{
   BrowserRouter as Router,
@@ -24,7 +24,7 @@ class App extends Component {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/teambuilder">Team Builder</Link></li>
               <li><Link to="/register">Register</Link></li>
-              <li><Link to="/account">My Account</Link></li>
+              {(sessionStorage.getItem("logUser")) === null ? <li><Link to="/account">Login</Link></li> : <li><Link to="/account" onClick={() => { sessionStorage.removeItem("logUser"); window.location.reload() }}>Logout</Link></li>}
 
             </ul>
           </nav>
@@ -38,7 +38,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/teambuilder" component={teambuilder} />
               <Route path="/register" component={register} />
-              <Route path="/account" component={account} />
+              <Route path="/account" component={() => <Account username={this.user} />} />
 
           </header>
               
