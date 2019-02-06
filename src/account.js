@@ -17,7 +17,7 @@ class account extends Component {
 update() {
   // let username = document.getElementById('username').value;
   // let password = document.getElementById('password').value;
-axios.get("http://localhost:8080/solo-project/nfl/account/getAccounts")
+axios.get("http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/getAccounts")
 .then((response) => {
         var username = this.state.username;
         var password = this.state.password;
@@ -35,38 +35,7 @@ axios.get("http://localhost:8080/solo-project/nfl/account/getAccounts")
 } 
 )}
 
-  
-  // login = () =>{
-  // axios({method:'get', url:"http://localhost:8080/solo-project/nfl/account/getAccounts"
-  //     })
-  //     .then(response => {
-  //       this.setState({users:response.data
-  //       });
-        
-  //       var username = this.state.username;
-  //       var password = this.state.password;
-        
-  //       this.state.account.forEach(function(user){
-  //         if(username===account.username){
-  //           console.log("account found")
-  //         }
-  //       })
-  //     }
-  //   )}  
     
-  //   handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     this.login();
-    
-  // }
-
-  // handleChange = (e) => {
-  //     this.setState({
-  //         [e.target.id]: e.target.value
-  //     });
-  // }
-
-      
   render() {
     return (
        

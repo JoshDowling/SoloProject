@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class Teambuilderplus extends Component {
     deleteTeam = () => {
-        axios.delete('http://localhost:8080/solo-project/nfl/account/deleteTeam/' + this.props.ID)
+        axios.delete('http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/deleteTeam/' + this.props.ID)
             .then(res => {
                 this.props.action();
                 console.log(res)
@@ -13,7 +13,7 @@ class Teambuilderplus extends Component {
 
     updateTeam = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:8080/solo-project/nfl/account/updateTeam/' + this.props.ID, {
+        axios.put('http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/updateTeam/' + this.props.ID, {
             teamName: this.refs.teamName.value,
             location: this.refs.location.value,
             accountID: this.refs.accountID.value
