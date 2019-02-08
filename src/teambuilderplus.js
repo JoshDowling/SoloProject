@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class Teambuilderplus extends Component {
     deleteTeam = () => {
-        axios.delete('http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/deleteTeam/' + this.props.ID)
+        axios.delete(' http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/deleteTeam/' + this.props.ID)
             .then(res => {
                 this.props.action();
                 console.log(res)
@@ -13,7 +13,7 @@ class Teambuilderplus extends Component {
 
     updateTeam = (e) => {
         e.preventDefault();
-        axios.put('http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/updateTeam/' + this.props.ID, {
+        axios.put(' http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/updateTeam/' + this.props.ID, {
             teamName: this.refs.teamName.value,
             location: this.refs.location.value,
             accountID: this.refs.accountID.value
@@ -29,24 +29,30 @@ class Teambuilderplus extends Component {
     render() {
         return (
             <div className='listButton'>
-                <fieldset>
-                    <legend>{this.props.teamName}</legend>
-                    <div>{this.props.location + ', Account ID: ' + this.props.accountID}</div>
-                    <fieldset>
-                        <legend>Edit Team</legend>
+                <h1>{'Team Name: ' +this.props.teamName}</h1>
+                    <div>
+                    <p>{'Team Location: ' +this.props.location} </p>
+                    <p>{'Account ID: ' + this.props.accountID}</p>  
+                    </div>
+                    
+                        <legend>Edit Team Below </legend>
                         <div className='column'>
                             <form className='updateForm' onSubmit={this.addTeam}>
-                                <input ref="teamName" type="text" placeholder="Enter Team Name" />
-                                <input ref="location" type="text" placeholder="Enter New Location" />
-                                <input ref="accountID" type="text" placeholder="Enter Account ID" />
-                                <br />
+                            <div class="form-group"> 
+                                <input ref="teamName" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Team Name*" />
+                            </div>
+                            <div class="form-group">  
+                                <input ref="location" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter New Location*" />
+                             </div>
+                             <div class="form-group">
+                               <input ref="accountID" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Account ID*" />
+                             </div>   
 
                             </form>
                         </div>
-                        <button id='updateButton' onClick={this.updateTeam}>Update</button>
-                        <button id='deleteButton' onClick={this.deleteTeam}>Delete</button>
-                    </fieldset>
-                </fieldset>
+                        <button id='updateButton' class="btn btn-lg btn-primary btn-block" onClick={this.updateTeam}>Update</button>
+                        <button id='deleteButton' class="btn btn-lg btn-primary btn-block" onClick={this.deleteTeam}>Delete</button>
+                        <br/>
             </div>
         );
     }

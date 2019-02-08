@@ -3,15 +3,14 @@ import nfl from './nfl.png';
 import './App.css';
 import teambuilder from'./teambuilder.js';
 import register from './register.js';
-import account from './account';
+import Account from './account';
 import Home from './home.js';
+import Update from './update.js';
 import{
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
-
-// import { Button } from 'reactstrap';
 
 class App extends Component {
   render() {
@@ -22,9 +21,10 @@ class App extends Component {
         <nav>
             <ul>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/teambuilder">Team Builder</Link></li>
-              <li><Link to="/register">Register</Link></li>
-              <li><Link to="/account">My Account</Link></li>
+              {(sessionStorage.getItem("logUser"))=== null ? <li><Link to="/register">Register</Link></li>:<li><Link to="/teambuilder">Team Builder</Link></li>}
+              
+              {(sessionStorage.getItem("logUser")) === null ? <li><Link to="/account">Login</Link></li> : <li><Link to="/update">Update Account</Link></li>}
+              <li><Link to="/account" onClick={() => { sessionStorage.removeItem("logUser"); window.location.reload() }}>Logout</Link></li>
 
             </ul>
           </nav>
@@ -36,9 +36,11 @@ class App extends Component {
         <h1 className= "nfl-main-heading">Welcome to The NFL Team Builder</h1>
            <header className="nfl-header">
               <Route exact path="/" component={Home} />
-              <Route path="/teambuilder" component={teambuilder} />
+              {(sessionStorage.getItem("logUser"))=== null ?  <Route path="/teambuilder" component={register} />:<Route path="/teambuilder" component={teambuilder} />}
               <Route path="/register" component={register} />
-              <Route path="/account" component={account} />
+              <Route path="/account" component={() => <Account username={this.user} />} />
+              <Route path="/update" component={Update} />
+
 
           </header>
               
