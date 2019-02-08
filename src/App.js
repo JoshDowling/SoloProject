@@ -26,6 +26,7 @@ class App extends Component {
               {(sessionStorage.getItem("logUser")) === null ? <li><Link to="/account">Login</Link></li> : <li><Link to="/update">Update Account</Link></li>}
               <li><Link to="/account" onClick={() => { sessionStorage.removeItem("logUser"); window.location.reload() }}>Logout</Link></li>
 
+
             </ul>
           </nav>
           <div className= "logo"><a href="/"><img src={nfl} className="nfl-logo" alt="logo" /></a></div>

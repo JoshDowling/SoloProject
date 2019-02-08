@@ -39,6 +39,7 @@ class Teambuilderplus extends Component {
                         <div className='column'>
                             <form className='updateForm' onSubmit={this.addTeam}>
                             <div class="form-group"> 
+
                                 <input ref="teamName" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Team Name*" />
                             </div>
                             <div class="form-group">  
@@ -46,6 +47,7 @@ class Teambuilderplus extends Component {
                              </div>
                              <div class="form-group">
                                <input ref="accountID" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Account ID*" />
+
                              </div>   
 
                             </form>
