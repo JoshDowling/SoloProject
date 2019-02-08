@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class Teambuilderplus extends Component {
     deleteTeam = () => {
-        axios.delete('http://localhost:8080/solo-project/nfl/account/deleteTeam/' + this.props.ID)
+        axios.delete(' http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/deleteTeam/' + this.props.ID)
             .then(res => {
                 this.props.action();
                 console.log(res)
@@ -13,7 +13,7 @@ class Teambuilderplus extends Component {
 
     updateTeam = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:8080/solo-project/nfl/account/updateTeam/' + this.props.ID, {
+        axios.put(' http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/updateTeam/' + this.props.ID, {
             teamName: this.refs.teamName.value,
             location: this.refs.location.value,
             accountID: this.refs.accountID.value
@@ -39,13 +39,15 @@ class Teambuilderplus extends Component {
                         <div className='column'>
                             <form className='updateForm' onSubmit={this.addTeam}>
                             <div class="form-group"> 
-                                <input ref="teamName" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Team Name" />
+
+                                <input ref="teamName" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Team Name*" />
                             </div>
                             <div class="form-group">  
-                                <input ref="location" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter New Location" />
+                                <input ref="location" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter New Location*" />
                              </div>
                              <div class="form-group">
-                               <input ref="accountID" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Account ID" />
+                               <input ref="accountID" type="name"  class="form-control"  required="" autofocus="" placeholder="Enter Account ID*" />
+
                              </div>   
 
                             </form>

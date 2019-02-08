@@ -13,7 +13,7 @@ class teambuilder extends Component {
     }
 
     this.update = () => {
-        axios.get('http://localhost:8080/solo-project/nfl/account/getTeams')
+        axios.get(' http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/getTeams')
             .then(res => {
                 const team = res.data;
                 this.setState({ team });
@@ -26,7 +26,7 @@ handler() {
 }
 
 componentDidMount() {
-    axios.get('http://localhost:8080/solo-project/nfl/account/getTeams')
+    axios.get(' http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/getTeams')
         .then(res => {
             const team = res.data;
             this.setState({ team });
@@ -35,7 +35,7 @@ componentDidMount() {
     
 addTeam = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/solo-project/nfl/account/addTeam', {
+    axios.post(' http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/addTeam', {
        teamName: this.refs.teamName.value,
        location: this.refs.location.value,
        accountID: this.refs.accountID.value

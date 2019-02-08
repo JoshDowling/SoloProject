@@ -11,12 +11,14 @@ class register extends Component {
         this.state = {
           name: null,
           username: null,
-          password: null
+          password: null,
+          message:null
         }
       }
-    
+      
       addaccount = () =>{
-      axios.post("http://localhost:8080/solo-project/nfl/account/addAccount",{
+      let aThis = this;
+      axios.post(" http://nfl.uksouth.cloudapp.azure.com:8080/solo-project/nfl/account/addAccount",{
             name: this.state.name,
             username: this.state.username,
             password: this.state.password
@@ -24,6 +26,9 @@ class register extends Component {
           })
           .then(function (response){
             console.log(response.data);
+            aThis.setState({
+              message: response.data.message
+          });
           })
           .catch(function (error) {
             console.log(error);
@@ -49,7 +54,7 @@ class register extends Component {
        
        <div className = "acpara">
             
-<div  class="form-signin" onSubmit={this.handleSubmit}>
+<div  >
 <form class="form-signin" onSubmit={this.handleSubmit}>
             <a href="/"><img class="mb-4" src={nfl}  alt="" width="150" height="200"/> </a>
             <h1 class="h3 mb-3 font-weight-normal">Please Register an Account</h1>
@@ -71,7 +76,10 @@ class register extends Component {
                        </div>
                     </div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                    
                 </form>
+                <br/>
+                <h3>{this.state.message}</h3>
         </div>
       </div>
     );
